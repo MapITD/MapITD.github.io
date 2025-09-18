@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataGeo Solutions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: #f4f6f9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #2c3e50, #34495e);
+      color: #fff;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+    }
+    header p {
+      font-size: 1.3em;
+      margin-top: 10px;
+    }
+    section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 2em;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      padding: 25px;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #34495e;
+    }
+    .about, .contact {
+      text-align: center;
+    }
+    footer {
+      background: #2c3e50;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+    a {
+      color: #2c3e50;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MapIT design</h1>
+    <p>Expert Services in Database Management, GIS, Solar Permitting & CAD Design</p>
+  </header>
+
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>
+      At <strong>MapIT design</strong>, we specialize in delivering 
+      <strong>cost-effective, high-quality, and timely services</strong> across 
+      large database management, GIS mapping, solar permit designs, and AutoCAD support.  
+      With a team of <strong>skilled and experienced professionals</strong>, we ensure 
+      precision, reliability, and a strong turnaround time (TAT) for every project.  
+    </p>
+  </section>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Large Database Management</h3>
+        <p>Scalable, efficient handling of complex datasets with a focus on data accuracy and performance optimization.</p>
+      </div>
+      <div class="card">
+        <h3>GIS Mapping</h3>
+        <p>Comprehensive GIS solutions including spatial analysis, mapping, and geospatial data visualization.</p>
+      </div>
+      <div class="card">
+        <h3>Solar Permit Designs</h3>
+        <p>Accurate and regulation-compliant solar permit drawings to streamline approvals and installations.</p>
+      </div>
+      <div class="card">
+        <h3>AutoCAD Services & Support</h3>
+        <p>Expert CAD drafting, design support, and conversion services tailored to industry requirements.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:info@mapitdesign.com">info@mapitdesign.com</a></p>
+    <p>Phone: +1 (555) 123-4567</p>
+    <p>Address: 123 Business Street, City, Country</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2020 mapitdesign.com. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
