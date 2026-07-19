@@ -7,61 +7,53 @@
     <title>MapIT Design | Professional Solar Permit Design & Engineering</title>
     
     <!-- Google Fonts Links -->
-    <link rel="stylesheet" href="https://googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com" rel="stylesheet">
     
     <!-- Font Awesome Icons Link -->
     <link rel="stylesheet" href="https://cloudflare.com">
-
+    
     <!-- Embedded CSS Styles -->
     <style>
         :root {
-            --primary-slate: #0f172a;    
-            --secondary-blue: #1e293b;   
-            --electric-green: #10b981;  
-            --action-hover: #059669;    
-            --text-dark: #334155;       
-            --text-light: #f8fafc;      
-            --border-subtle: #e2e8f0;   
+            --primary-slate: #0f172a;
+            --secondary-blue: #1e293b;
+            --electric-green: #10b981;
+            --action-hover: #059669;
+            --text-dark: #334155;
+            --text-light: #f8fafc;
+            --border-subtle: #e2e8f0;
             --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
         html {
             scroll-behavior: smooth;
         }
-
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
             background-color: #f8fafc;
             line-height: 1.6;
-            display: block !important; 
-            visibility: visible !important;
         }
-
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
-
         section {
             padding: 100px 0;
-            display: block;
         }
-
         .section-title {
             text-align: center;
             max-width: 700px;
             margin: 0 auto 60px;
         }
-
         .section-title h2 {
             font-size: 36px;
             color: var(--primary-slate);
@@ -69,12 +61,10 @@
             letter-spacing: -0.5px;
             margin-bottom: 15px;
         }
-
         .section-title p {
             color: #64748b;
             font-size: 18px;
         }
-
         .btn {
             display: inline-block;
             padding: 14px 32px;
@@ -86,35 +76,26 @@
             cursor: pointer;
             border: none;
         }
-
         .btn-primary {
             background-color: var(--electric-green);
             color: #fff;
         }
-
         .btn-primary:hover {
             background-color: var(--action-hover);
             transform: translateY(-2px);
         }
-
         .btn-secondary {
             background-color: transparent;
             color: #fff;
             border: 2px solid #fff;
             margin-left: 15px;
         }
-
         .btn-secondary:hover {
             background-color: #fff;
             color: var(--primary-slate);
         }
-
-        .btn-block {
-            width: 100%;
-            text-align: center;
-        }
-
-        /* ==================== NAVIGATION BAR ==================== */
+        
+        /* NAVIGATION BAR */
         .navbar {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -123,9 +104,7 @@
             top: 0;
             z-index: 2000;
             transition: var(--transition-smooth);
-            display: block;
         }
-
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -135,28 +114,23 @@
             margin: 0 auto;
             padding: 0 24px;
         }
-
         .logo {
             font-size: 24px;
             font-weight: 700;
             color: var(--primary-slate);
             text-decoration: none;
         }
-
         .logo span {
             color: var(--electric-green);
         }
-
         .nav-menu {
             display: flex;
             align-items: center;
             list-style: none;
         }
-
         .nav-menu li {
             margin-left: 30px;
         }
-
         .nav-menu a {
             text-decoration: none;
             color: #475569;
@@ -164,30 +138,20 @@
             font-size: 15px;
             transition: var(--transition-smooth);
         }
-
         .nav-menu a:hover:not(.nav-btn) {
             color: var(--electric-green);
         }
-
         .nav-menu .nav-btn {
             background-color: var(--primary-slate);
             color: #fff;
             padding: 10px 20px;
             border-radius: 4px;
         }
-
         .nav-menu .nav-btn:hover {
             background-color: var(--electric-green);
         }
 
-        .hamburger {
-            display: none;
-            font-size: 24px;
-            color: var(--primary-slate);
-            cursor: pointer;
-        }
-
-        /* ==================== HERO BANNER ==================== */
+        /* HERO BANNER */
         .hero {
             position: relative;
             background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(30,41,59,0.85)), url('https://unsplash.com') no-repeat center center/cover;
@@ -198,14 +162,12 @@
             text-align: center;
             color: #fff;
         }
-
         .hero-content {
             position: relative;
             z-index: 10;
             max-width: 900px;
             padding: 0 20px;
         }
-
         .badge {
             display: inline-block;
             background-color: rgba(16, 185, 129, 0.2);
@@ -219,7 +181,6 @@
             letter-spacing: 1px;
             margin-bottom: 25px;
         }
-
         .hero h1 {
             font-size: 54px;
             font-weight: 700;
@@ -227,7 +188,6 @@
             line-height: 1.15;
             margin-bottom: 20px;
         }
-
         .hero p {
             font-size: 21px;
             color: #cbd5e1;
@@ -235,31 +195,27 @@
             margin: 0 auto 40px;
         }
 
-        /* ==================== METRIC COUNTERS ==================== */
+        /* METRIC COUNTERS */
         .counters-section {
             background-color: var(--primary-slate);
             padding: 50px 0;
             border-bottom: 4px solid var(--electric-green);
         }
-
         .counters-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             text-align: center;
         }
-
         .counter-card {
             color: #fff;
         }
-
         .counter-num {
             font-size: 42px;
             font-weight: 700;
             color: var(--electric-green);
             margin-bottom: 5px;
         }
-
         .counter-card p {
             color: #94a3b8;
             font-size: 14px;
@@ -267,31 +223,27 @@
             letter-spacing: 0.5px;
         }
 
-        /* ==================== ABOUT SECTION ==================== */
+        /* ABOUT SECTION */
         .about {
             background-color: #fff;
         }
-
         .section-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
         }
-
         .about-text h2 {
             font-size: 32px;
             color: var(--primary-slate);
             margin-bottom: 20px;
             text-align: left;
         }
-
         .about-text p {
             font-size: 17px;
             color: #475569;
             margin-bottom: 20px;
         }
-
         .about-image img {
             width: 100%;
             height: auto;
@@ -299,17 +251,15 @@
             box-shadow: 0 20px 40px rgba(15,23,42,0.08);
         }
 
-        /* ==================== VALUE GRID ==================== */
+        /* VALUE GRID */
         .why-us {
             background-color: #f1f5f9;
         }
-
         .why-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 25px;
         }
-
         .why-card {
             background-color: #fff;
             padding: 35px;
@@ -317,12 +267,10 @@
             border: 1px solid var(--border-subtle);
             transition: var(--transition-smooth);
         }
-
         .why-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(15,23,42,0.05);
         }
-
         .check-icon {
             font-size: 24px;
             color: var(--electric-green);
@@ -332,23 +280,20 @@
             margin-bottom: 20px;
             display: inline-block;
         }
-
         .why-card h3 {
             font-size: 20px;
             color: var(--primary-slate);
             margin-bottom: 12px;
         }
-
         .why-card p {
             font-size: 15px;
             color: #64748b;
         }
 
-        /* ==================== SERVICES GRID ==================== */
+        /* SERVICES GRID */
         .services {
             background-color: #fff;
         }
-
         .service-category-title {
             font-size: 24px;
             color: var(--primary-slate);
@@ -357,16 +302,33 @@
             padding-bottom: 8px;
             border-bottom: 2px solid var(--border-subtle);
         }
-
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
-
         .service-card {
             padding: 30px;
             background-color: #f8fafc;
- </body>
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+        }
+        .service-card h4 {
+            margin-bottom: 10px;
+            color: var(--primary-slate);
+        }
+        
+        @media (max-width: 768px) {
+            .section-split { grid-template-columns: 1fr; gap: 40px; }
+            .hero h1 { font-size: 38px; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
 
-</html>
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">MapIT <span>Design</span></a>
+            <ul class="nav-menu">
