@@ -117,25 +117,14 @@
             padding: 0 24px;
         }
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--mid-dark-blue);
-            text-decoration: none;
+            height: 60px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            text-decoration: none;
         }
-        .logo span {
-            color: var(--mid-green);
-        }
-        .logo-badge {
-            background-color: var(--mid-dark-blue);
-            color: var(--mid-green);
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
+        .logo img {
+            height: 100%;
+            width: auto;
         }
         .nav-menu {
             display: flex;
@@ -168,7 +157,9 @@
         /* HERO BANNER */
         .hero {
             position: relative;
-            background: linear-gradient(135deg, rgba(13,31,60,0.95), rgba(15,23,42,0.85)), url('https://unsplash.com') no-repeat center center/cover;
+            background: linear-gradient(135deg, rgba(13,31,60,0.85), rgba(15,23,42,0.85)), url('./MID_Backdrop.png') no-repeat center center/cover;
+            background-size: cover;
+            background-position: center;
             height: 85vh;
             display: flex;
             align-items: center;
@@ -495,6 +486,7 @@
             .nav-menu { display: none; }
             .contact-details { grid-template-columns: 1fr; }
             .workflow-timeline::before { display: none; }
+            .logo img { height: 50px; }
         }
     </style>
 </head>
@@ -503,8 +495,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                Map<span>IT</span> Design
-                <span class="logo-badge">MID</span>
+                <img src="./MID-LOGO.png" alt="MapIT Design (MID) Logo">
             </a>
             <ul class="nav-menu">
                 <li><a href="#about">About</a></li>
