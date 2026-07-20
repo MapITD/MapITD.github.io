@@ -321,11 +321,77 @@
             font-size: 15px;
             color: #64748b;
         }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            background-color: var(--primary-slate);
+            color: #fff;
+        }
+        .contact-content {
+            text-align: center;
+        }
+        .contact-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .contact-content p {
+            font-size: 18px;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .contact-item {
+            background-color: rgba(16, 185, 129, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .contact-item-icon {
+            font-size: 32px;
+            color: var(--electric-green);
+            margin-bottom: 15px;
+        }
+        .contact-item-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .contact-item-content {
+            font-size: 16px;
+            color: #cbd5e1;
+            word-break: break-word;
+        }
+        .contact-item-content a {
+            color: var(--electric-green);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        .contact-item-content a:hover {
+            text-decoration: underline;
+            color: #34d399;
+        }
+        
+        /* FOOTER */
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+        }
         
         @media (max-width: 768px) {
             .section-split { grid-template-columns: 1fr; gap: 40px; }
             .hero h1 { font-size: 38px; }
             .nav-menu { display: none; }
+            .contact-details { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -495,16 +561,49 @@
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" style="background-color: var(--primary-slate); color: #fff; text-align: center;">
+    <section class="contact-section" id="contact">
         <div class="container">
-            <h2 style="font-size: 36px; margin-bottom: 20px;">Ready to Get Started?</h2>
-            <p style="font-size: 18px; color: #cbd5e1; margin-bottom: 30px;">Contact us today for your solar design and engineering needs.</p>
-            <button class="btn btn-primary">Contact MapIT Design</button>
+            <div class="contact-content">
+                <h2>Get In Touch</h2>
+                <p>Contact MapIT Design for professional solar permit design and engineering services</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🌐</div>
+                        <div class="contact-item-title">Website</div>
+                        <div class="contact-item-content">
+                            <a href="https://www.mapitdesign.com" target="_blank">www.mapitdesign.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+                        <div class="contact-item-title">Email</div>
+                        <div class="contact-item-content">
+                            <a href="mailto:info@mapitdesign.com">info@mapitdesign.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-title">Address</div>
+                        <div class="contact-item-content">
+                            MapITDesign (MID)<br>
+                            Delhi, 110001<br>
+                            India
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary">Contact MapIT Design</button>
+            </div>
         </div>
     </section>
 
-    <footer style="background-color: #000; color: #fff; padding: 30px; text-align: center;">
+    <!-- FOOTER -->
+    <footer class="footer">
         <p>&copy; 2024 MapIT Design. All rights reserved.</p>
+        <p style="font-size: 14px; margin-top: 10px; color: #94a3b8;">Professional Solar Permit Design & Engineering | AHJ Compliant | PE Stamped | Aurora Proposals | GIS Mapping</p>
     </footer>
 </body>
 </html>
