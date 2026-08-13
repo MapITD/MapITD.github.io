@@ -1,1114 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MapIT Design (MID) provides professional, AHJ-compliant solar permit design, Aurora proposals, PE stamping, and GIS mapping solutions for our Clients.>
-    <title>MapIT Design (MID) | Professional Solar Permit Design & Engineering</title>
-    
-    <!-- Google Fonts Links -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://googleapis.com" rel="stylesheet">
-    
-    <!-- Font Awesome Icons Link -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-    
-    <!-- Embedded CSS Styles -->
-    <style>
-        :root {
-            --primary-slate: #0f172a;
-            --secondary-blue: #1e293b;
-            --electric-green: #10b981;
-            --action-hover: #059669;
-            --text-dark: #334155;
-            --text-light: #f8fafc;
-            --border-subtle: #e2e8f0;
-            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --mid-dark-blue: #0d1f3c;
-            --mid-green: #16a34a;
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: #f8fafc;
-            line-height: 1.6;
-        }
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        section {
-            padding: 100px 0;
-        }
-        .section-title {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-        }
-        .section-title h2 {
-            font-size: 36px;
-            color: var(--primary-slate);
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 15px;
-        }
-        .section-title p {
-            color: #64748b;
-            font-size: 18px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            font-weight: 600;
-            font-size: 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-            border: none;
-        }
-        .btn-primary {
-            background-color: var(--electric-green);
-            color: #fff;
-        }
-        .btn-primary:hover {
-            background-color: var(--action-hover);
-            transform: translateY(-2px);
-        }
-        .btn-secondary {
-            background-color: transparent;
-            color: #fff;
-            border: 2px solid #fff;
-            margin-left: 15px;
-        }
-        .btn-secondary:hover {
-            background-color: #fff;
-            color: var(--primary-slate);
-        }
-        
-        /* NAVIGATION BAR */
-        .navbar {
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 3px solid var(--mid-green);
-            position: sticky;
-            top: 0;
-            z-index: 2000;
-            transition: var(--transition-smooth);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-        .nav-container {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 60px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 10px 24px;
-        }
-        .logo-section {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-            min-width: fit-content;
-        }
-        .logo {
-            height: 90px;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            padding: 5px 0;
-        }
-        .logo img {
-            height: 100%;
-            width: auto;
-            object-fit: contain;
-        }
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            list-style: none;
-            gap: 40px;
-            margin-left: auto;
-            flex-wrap: nowrap;
-        }
-        .nav-menu li {
-            margin-left: 0;
-        }
-        .nav-menu a {
-            text-decoration: none;
-            color: #475569;
-            font-weight: 600;
-            font-size: 15px;
-            transition: var(--transition-smooth);
-            white-space: nowrap;
-        }
-        .nav-menu a:hover:not(.nav-btn) {
-            color: var(--mid-green);
-        }
-        .nav-menu .nav-btn {
-            background-color: var(--mid-dark-blue);
-            color: #fff;
-            padding: 12px 28px;
-            border-radius: 6px;
-            white-space: nowrap;
-            font-weight: 600;
-        }
-        .nav-menu .nav-btn:hover {
-            background-color: var(--electric-green);
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MapIT Design (MID) provides professional, AHJ-compliant solar permit design, Aurora proposals, PE stamping, and GIS mapping solutions for solar installers and EPCs across the USA & Canada.">
+  <title>MapIT Design (MID) | Professional Solar Permit Design & Engineering</title>
 
-        /* HERO BANNER */
-        .hero {
-            position: relative;
-            background: linear-gradient(135deg, rgba(13,31,60,0.85), rgba(15,23,42,0.85)), url('./MID_Backdrop.png') no-repeat center center/cover;
-            background-size: cover;
-            background-position: center;
-            height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            max-width: 900px;
-            padding: 0 20px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(22, 163, 74, 0.2);
-            border: 1px solid var(--mid-green);
-            color: #34d399;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
-        }
-        .hero h1 {
-            font-size: 54px;
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            line-height: 1.15;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 21px;
-            color: #cbd5e1;
-            max-width: 750px;
-            margin: 0 auto 40px;
-        }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-        /* METRIC COUNTERS */
-        .counters-section {
-            background-color: var(--mid-dark-blue);
-            padding: 50px 0;
-            border-bottom: 4px solid var(--mid-green);
-        }
-        .counters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-        .counter-card {
-            color: #fff;
-        }
-        .counter-num {
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--mid-green);
-            margin-bottom: 5px;
-        }
-        .counter-card p {
-            color: #94a3b8;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pb8H6kQmY3u6Yv+ZQkFq3k1d4X9j1wO9i2VJ7p3G2Q1o5g6h2k9z1Vw5YbR0Qm2vZP1l6T2X1rV7X1Z2Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        /* ABOUT SECTION */
-        .about {
-            background-color: #fff;
-        }
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: stretch;
-        }
-        .about-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .about-text h2 {
-            font-size: 32px;
-            color: var(--mid-dark-blue);
-            margin-bottom: 20px;
-            text-align: left;
-            font-weight: 700;
-        }
-        .about-text p {
-            font-size: 15px;
-            color: #475569;
-            margin-bottom: 16px;
-            line-height: 1.8;
-        }
-        .about-image {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .about-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(15,23,42,0.12);
-            object-fit: cover;
-        }
+  <style>
+    :root{
+      --primary-slate:#0f172a;
+      --mid-dark-blue:#0d1f3c;
+      --mid-green:#16a34a;
+      --electric-green:#10b981;
+      --action-hover:#059669;
+      --text-dark:#334155;
+      --bg:#f8fafc;
+      --border-subtle:#e2e8f0;
+      --transition:all 0.3s cubic-bezier(.16,1,.3,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text-dark);background:var(--bg);line-height:1.6}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    a{color:inherit}
 
-        /* LEARN MORE SECTION */
-        .learn-more {
-            background-color: #fff;
-        }
-        .learn-more-header {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto 60px;
-        }
-        .learn-more-header h2 {
-            font-size: 40px;
-            color: var(--mid-dark-blue);
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        .learn-more-header p {
-            font-size: 18px;
-            color: #64748b;
-            line-height: 1.8;
-        }
-        .learn-more-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .learn-more-content h3 {
-            font-size: 24px;
-            color: var(--mid-dark-blue);
-            font-weight: 700;
-            margin: 40px 0 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid var(--mid-green);
-        }
-        .learn-more-content p {
-            font-size: 16px;
-            color: #475569;
-            margin-bottom: 18px;
-            line-height: 1.8;
-        }
-        .workflow-list {
-            background-color: #f8fafc;
-            padding: 30px;
-            border-radius: 8px;
-            border-left: 4px solid var(--mid-green);
-            margin-bottom: 30px;
-        }
-        .workflow-list ol {
-            margin-left: 20px;
-        }
-        .workflow-list li {
-            font-size: 16px;
-            color: #475569;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        .workflow-list strong {
-            color: var(--mid-dark-blue);
-            font-weight: 700;
-        }
-        .deliverables-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .deliverable-item {
-            background-color: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border-subtle);
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        .deliverable-icon {
-            font-size: 20px;
-            color: var(--mid-green);
-            flex-shrink: 0;
-            margin-top: 3px;
-        }
-        .deliverable-text {
-            font-size: 15px;
-            color: #475569;
-            font-weight: 600;
-        }
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        .benefit-card {
-            background-color: #f8fafc;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid var(--border-subtle);
-            transition: var(--transition-smooth);
-        }
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(22, 163, 74, 0.1);
-            border-color: var(--mid-green);
-        }
-        .benefit-card h4 {
-            font-size: 18px;
-            color: var(--mid-dark-blue);
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .benefit-card p {
-            font-size: 15px;
-            color: #64748b;
-            line-height: 1.6;
-        }
-        .cta-section {
-            background: linear-gradient(135deg, var(--mid-dark-blue), #1a3a52);
-            color: #fff;
-            padding: 60px 30px;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 60px;
-        }
-        .cta-section h3 {
-            font-size: 32px;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-        .cta-section p {
-            font-size: 18px;
-            color: #cbd5e1;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .cta-buttons a {
-            display: inline-block;
-            padding: 14px 32px;
-            font-weight: 600;
-            font-size: 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-        .btn-cta-primary {
-            background-color: var(--electric-green);
-            color: #fff;
-        }
-        .btn-cta-primary:hover {
-            background-color: var(--action-hover);
-            transform: translateY(-2px);
-        }
-        .btn-cta-secondary {
-            background-color: transparent;
-            color: #fff;
-            border: 2px solid #fff;
-        }
-        .btn-cta-secondary:hover {
-            background-color: #fff;
-            color: var(--mid-dark-blue);
-        }
+    /* NAV */
+    .navbar{background:rgba(255,255,255,0.98);backdrop-filter:blur(6px);border-bottom:3px solid var(--mid-green);position:sticky;top:0;z-index:1200}
+    .nav-inner{display:flex;align-items:center;gap:24px;padding:14px 20px}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo img{height:56px;width:auto;display:block}
+    .nav-menu{margin-left:auto;display:flex;gap:18px;list-style:none;align-items:center}
+    .nav-menu a{font-weight:600;font-size:14px;color:#475569;text-decoration:none;padding:8px}
+    .btn-contact{background:var(--mid-dark-blue);color:#fff;padding:10px 18px;border-radius:8px}
 
-        /* WORKFLOW SECTION */
-        .workflow {
-            background-color: #f1f5f9;
-        }
-        .workflow-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .workflow-title h2 {
-            font-size: 36px;
-            color: var(--mid-dark-blue);
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        .workflow-timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 0;
-            align-items: stretch;
-            position: relative;
-        }
-        .workflow-timeline::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background-color: var(--mid-green);
-            z-index: 0;
-        }
-        .workflow-step {
-            background-color: #fff;
-            padding: 30px 20px;
-            text-align: center;
-            border: 2px solid var(--border-subtle);
-            position: relative;
-            z-index: 1;
-            transition: var(--transition-smooth);
-        }
-        .workflow-step:hover {
-            box-shadow: 0 10px 30px rgba(22, 163, 74, 0.15);
-            border-color: var(--mid-green);
-        }
-        .workflow-step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: #fff;
-            border: 3px solid var(--mid-green);
-            color: var(--mid-green);
-            border-radius: 50%;
-            font-size: 20px;
-            font-weight: 700;
-            margin: 0 auto 15px;
-        }
-        .workflow-step-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--mid-dark-blue);
-            margin-top: 15px;
-        }
-        .workflow-step-desc {
-            font-size: 13px;
-            color: #64748b;
-            margin-top: 10px;
-            line-height: 1.5;
-        }
+    /* HERO */
+    .hero{min-height:68vh;background:linear-gradient(135deg,rgba(13,31,60,0.85),rgba(15,23,42,0.85)),url('./assets/MID_Backdrop.png') center/cover no-repeat;display:flex;align-items:center}
+    .hero-inner{color:#fff;padding:48px 20px}
+    .badge{display:inline-block;background:rgba(22,163,74,.12);color:var(--mid-green);padding:8px 14px;border-radius:999px;font-weight:700;font-size:13px}
+    .hero h1{font-size:40px;margin:18px 0;line-height:1.05}
+    .hero p{color:#cbd5e1;max-width:760px;font-size:18px}
+    .hero-actions{margin-top:20px;display:flex;gap:12px}
+    .btn-primary{background:var(--electric-green);color:#fff;padding:12px 22px;border-radius:8px;font-weight:700}
+    .btn-outline{padding:10px 20px;border:2px solid #fff;border-radius:8px;color:#fff;background:transparent}
 
-        /* VALUE GRID */
-        .why-us {
-            background-color: #fff;
-        }
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 25px;
-        }
-        .why-card {
-            background-color: #f8fafc;
-            padding: 35px;
-            border-radius: 10px;
-            border: 1px solid var(--border-subtle);
-            transition: var(--transition-smooth);
-        }
-        .why-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(22, 163, 74, 0.1);
-        }
-        .check-icon {
-            font-size: 24px;
-            color: #fff;
-            background-color: var(--mid-green);
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        .why-card h3 {
-            font-size: 20px;
-            color: var(--mid-dark-blue);
-            margin-bottom: 12px;
-        }
-        .why-card p {
-            font-size: 15px;
-            color: #64748b;
-        }
+    /* SECTIONS */
+    section{padding:64px 0}
+    .section-title{text-align:center;max-width:760px;margin:0 auto 36px}
+    .section-title h2{font-size:30px;color:var(--primary-slate);font-weight:700}
+    .section-title p{color:#64748b;margin-top:10px}
 
-        /* SERVICES GRID */
-        .services {
-            background-color: #fff;
-        }
-        .service-category-title {
-            font-size: 24px;
-            color: var(--mid-dark-blue);
-            font-weight: 700;
-            margin: 40px 0 20px;
-            padding-bottom: 8px;
-            border-bottom: 3px solid var(--mid-green);
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-        .service-card {
-            padding: 30px;
-            background-color: #f8fafc;
-            border-radius: 8px;
-            border: 1px solid var(--border-subtle);
-            transition: var(--transition-smooth);
-        }
-        .service-card:hover {
-            border-color: var(--mid-green);
-            box-shadow: 0 5px 15px rgba(22, 163, 74, 0.1);
-        }
-        .service-card h4 {
-            margin-bottom: 10px;
-            color: var(--mid-dark-blue);
-            font-weight: 700;
-        }
-        .service-card p {
-            font-size: 15px;
-            color: #64748b;
-        }
+    /* COUNTERS */
+    .counters{background:var(--mid-dark-blue);color:#fff;padding:28px 0;border-bottom:4px solid var(--mid-green)}
+    .counters-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;align-items:center}
+    .counter .num{font-size:28px;font-weight:800;color:var(--mid-green)}
+    .counter p{color:#cbd5e1;font-size:13px;margin-top:6px}
 
-        /* CONTACT SECTION */
-        .contact-section {
-            background: linear-gradient(135deg, var(--mid-dark-blue), #1a3a52);
-            color: #fff;
-        }
-        .contact-content {
-            text-align: center;
-        }
-        .contact-content h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-        .contact-content p {
-            font-size: 18px;
-            color: #cbd5e1;
-            margin-bottom: 30px;
-        }
-        .contact-details {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-            margin-bottom: 50px;
-        }
-        .contact-item {
-            background-color: rgba(22, 163, 74, 0.1);
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid rgba(22, 163, 74, 0.3);
-        }
-        .contact-item-icon {
-            font-size: 32px;
-            color: var(--mid-green);
-            margin-bottom: 15px;
-        }
-        .contact-item-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-        .contact-item-content {
-            font-size: 16px;
-            color: #cbd5e1;
-            word-break: break-word;
-        }
-        .contact-item-content a {
-            color: var(--mid-green);
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-        .contact-item-content a:hover {
-            text-decoration: underline;
-            color: #34d399;
-        }
-        
-        /* FOOTER */
-        .footer {
-            background-color: #000;
-            color: #fff;
-            padding: 30px;
-            text-align: center;
-        }
-        .footer p {
-            margin: 5px 0;
-        }
-        .footer-branding {
-            font-size: 14px;
-            color: var(--mid-green);
-            margin-top: 10px;
-            font-weight: 600;
-        }
-        
-        @media (max-width: 1024px) {
-            .nav-container {
-                gap: 40px;
-            }
-            .logo {
-                height: 80px;
-            }
-            .nav-menu {
-                gap: 30px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .about-container { grid-template-columns: 1fr; gap: 40px; }
-            .hero h1 { font-size: 38px; }
-            .nav-menu { 
-                display: none;
-            }
-            .contact-details { grid-template-columns: 1fr; }
-            .workflow-timeline::before { display: none; }
-            .logo {
-                height: 70px;
-            }
-            .nav-container {
-                gap: 20px;
-                padding: 10px 20px;
-            }
-            .cta-buttons {
-                flex-direction: column;
-            }
-            .cta-buttons a {
-                width: 100%;
-                text-align: center;
-            }
-            .learn-more-header h2 {
-                font-size: 28px;
-            }
-        }
-    </style>
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+    .about-grid img{width:100%;border-radius:12px;box-shadow:0 20px 40px rgba(15,23,42,.08)}
+
+    /* SERVICES */
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .service{background:#fff;border:1px solid var(--border-subtle);padding:18px;border-radius:10px}
+    .service h4{color:var(--mid-dark-blue);margin-bottom:8px}
+
+    /* TIMELINE */
+    .timeline{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .step{background:#fff;padding:18px;border-radius:8px;border:1px solid var(--border-subtle);min-width:150px;text-align:center}
+    .step .num{background:var(--mid-green);color:#fff;width:36px;height:36px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px;font-weight:700}
+
+    /* CONTACT CARDS */
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .card{background:linear-gradient(135deg,var(--mid-dark-blue),#173a53);color:#fff;padding:18px;border-radius:10px}
+    .card a{color:#a7f3d0;text-decoration:none}
+
+    /* FOOTER */
+    .footer{background:#000;color:#fff;padding:28px;text-align:center}
+
+    @media (max-width:900px){.about-grid{grid-template-columns:1fr}.nav-menu{display:none}.hero h1{font-size:28px}}
+  </style>
 </head>
 <body>
-    <!-- NAVIGATION BAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo-section">
-                <a href="#" class="logo">
-                    <img src="./MID-LOGO.png" alt="MapIT Design (MID) Logo">
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#learn-more">Learn More</a></li>
-                <li><a href="#workflow">Process</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#why-mapit">Why Us</a></li>
-                <li><a href="#contact" class="nav-btn">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="badge">Solar Permit Design Excellence</div>
-            <h1>Professional Solar Permit Design & Engineering</h1>
-            <p>AHJ-compliant permit designs, Aurora proposals, PE stamping, and GIS mapping for solar installers.</p>
-            <a href="#contact" class="btn btn-primary">Get Started</a>
-            <a href="#learn-more" class="btn btn-secondary">Learn More</a>
-        </div>
-    </section>
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="/" class="logo" aria-label="MapIT Design home">
+        <img src="./assets/MID-LOGO.png" alt="MapIT Design logo">
+        <span style="font-weight:700;color:var(--mid-dark-blue)">MapIT Design</span>
+      </a>
 
-    <!-- COUNTERS SECTION -->
-    <section class="counters-section">
-        <div class="container">
-            <div class="counters-grid">
-                <div class="counter-card">
-                    <div class="counter-num">500+</div>
-                    <p>Projects Completed</p>
-                </div>
-                <div class="counter-card">
-                    <div class="counter-num">50+</div>
-                    <p>Team Members</p>
-                </div>
-                <div class="counter-card">
-                    <div class="counter-num">10+</div>
-                    <p>Years Experience</p>
-                </div>
-                <div class="counter-card">
-                    <div class="counter-num">98%</div>
-                    <p>Client Satisfaction</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <ul class="nav-menu" role="menubar">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#workflow">Process</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#contact" class="btn-contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- ABOUT SECTION -->
-    <section class="about" id="about">
+  <header class="hero" role="banner">
+    <div class="container hero-inner">
+      <span class="badge">Solar Permit Design Excellence</span>
+      <h1>Professional Solar Permit Design &amp; Engineering</h1>
+      <p>AHJ-compliant permit plan sets, Aurora proposals, PE stamping support, and utility interconnection documentation for solar installers and EPCs.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#contact">Get Started</a>
+        <a class="btn-outline" href="#services">Our Services</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="counters" aria-labelledby="metrics">
     <div class="container">
-        <div class="about-container">
-            <div class="about-text">
-                <h2>About MapIT Design (MID)</h2>
-
-                <p>MapIT Design (MID) is a specialized solar design and engineering support partner serving solar installers, EPC companies, and renewable energy contractors across the United States and Canada.</p>
-
-                <p>We provide end-to-end solar design solutions, including Aurora Solar proposals, AHJ-compliant permit plan sets, electrical and structural documentation, PE-stamped engineering drawings, and engineering support to help accelerate project approvals.</p>
-
-                <p>Our experienced design team understands the challenges solar companies face as project volumes grow—from tight deadlines and AHJ revisions to complex utility requirements and changing code compliance. We deliver accurate, high-quality design packages that help reduce turnaround time and keep projects on schedule.</p>
-
-                <p>With expertise in NEC, CEC, AHJ requirements, utility standards, and solar industry best practices, we support residential, commercial, ground-mounted, carport, and battery energy storage projects with reliable, code-compliant designs.</p>
-
-                <p>From the initial customer proposal to final permit approval, MapIT Design helps solar companies streamline their workflow, reduce design bottlenecks, and deliver projects faster, smarter, and more efficiently.</p>
-            </div>           
+      <div class="counters-grid">
+        <div class="counter">
+          <div class="num">500+</div>
+          <p>Projects Completed</p>
         </div>
+        <div class="counter">
+          <div class="num">50+</div>
+          <p>Team Members</p>
+        </div>
+        <div class="counter">
+          <div class="num">10+</div>
+          <p>Years Experience</p>
+        </div>
+        <div class="counter">
+          <div class="num">98%</div>
+          <p>Client Satisfaction</p>
+        </div>
+      </div>
     </div>
-</section>
-    <!-- LEARN MORE SECTION -->
-<section class="learn-more" id="learn-more">
+  </section>
+
+  <section id="about">
     <div class="container">
-        <div class="learn-more-header">
-            <h2>From Proposal to PTO – Complete Solar Design Support</h2>
+      <div class="section-title">
+        <h2>About MapIT Design (MID)</h2>
+        <p>Professional solar design and engineering support — from proposal to PTO — helping installers scale with permit-ready documentation.</p>
+      </div>
 
-            <p>
-                At MapIT Design (MID), we help solar installers, EPC companies, and renewable energy contractors streamline project delivery by providing reliable solar engineering and design support throughout the entire project lifecycle. Whether you need proposal designs, permit plan sets, engineering coordination, or utility documentation, our experienced team delivers accurate, code-compliant solutions with fast turnaround times.
-            </p>
-
-            <p style="margin-top: 20px; font-weight: 600; color: var(--mid-dark-blue);">
-                Our goal is simple: reduce your design bottlenecks so your team can focus on selling, installing, and growing your business while we take care of the design and permitting process.
-            </p>
+      <div class="about-grid">
+        <div>
+          <h3>Reliable. Compliant. Fast.</h3>
+          <p>MapIT Design (MID) partners with solar installers, EPCs, and renewable contractors across the United States and Canada. Our services include Aurora Solar proposals, AHJ-compliant permit plan sets, single-line and three-line electrical diagrams, structural attachment plans, PE stamping coordination, utility interconnection packages, and PTO support.</p>
+          <p><strong>Typical turnaround:</strong> 24–72 hours for standard residential projects. Scalable support available for larger portfolios and commercial projects.</p>
         </div>
-
-        <div class="learn-more-content">
-            <h3>Our End-to-End Workflow</h3>
-
-            <p>
-                We support every stage of the solar project lifecycle—from the initial proposal and system design to permit approval and utility documentation—ensuring a smooth, efficient process from start to finish.
-            </p>
-                
-                <div class="workflow-list">
-                    <ol>
-                        <li>
-                            <strong>Aurora Proposal Design</strong><br>
-                            Create professional solar proposals with optimized system layouts, production estimates, and financial analysis to help your sales team close more projects.
-                        </li>
-                        <li>
-                            <strong>Site & Roof Assessment</strong><br>
-                            Review site information, roof geometry, utility requirements, satellite imagery, and customer documentation to ensure every project starts with accurate design data.
-                        </li>
-                        <li>
-                            <strong>Permit Plan Sets</strong><br>
-                            <p>Prepare complete AHJ-compliant permit packages, including site plans, roof layouts, single-line diagrams, three-line diagrams, attachment layouts, equipment specifications, structural and electrical documentation, code compliance notes, placards, and utility-ready drawings to support fast and accurate permit approvals.</p>
-                        </li>
-                        <li>
-                            <strong>PE Stamping Support</strong><br>
-                            Coordinate Professional Engineer (PE) reviews and stamping where required by local jurisdictions.
-                        </li>
-                        <li>
-                            <strong>Permitting Support</strong><br>
-                            Assist with permit revisions, correction comments, and documentation updates to help speed up approval.
-                        </li>
-                        <li>
-                            <strong>Utility Interconnection</strong><br>
-                            Prepare utility application packages and required documentation for interconnection approval.
-                        </li>
-                        <li>
-                            <strong>Permission to Operate (PTO)</strong><br>
-                            Provide support through the final approval process until your customer receives Permission to Operate.
-                        </li>
-                    </ol>
-                </div>
-
-                <h3>What We Deliver</h3>
-                <p>Every project is prepared with accuracy and attention to detail. Our deliverables include:</p>
-                
-                <div class="deliverables-grid">
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">Solar PV Permit Plan Sets</div>
-                    </div>
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">Battery Storage Plan Sets</div>
-                    </div>
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">Site Plans</div>
-                    </div>
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">Roof Layouts</div>
-                    </div>
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">Electrical Single-Line Diagrams</div>
-                    </div>
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">Three-Line Diagrams</div>
-                    </div>
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">Structural Attachment Plans</div>
-                    </div>
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">Placard Packages</div>
-                    </div>
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">NEC Compliance Documentation</div>
-                    </div>
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">Utility Interconnection Documents</div>
-                    </div>
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">Permit Revision Support</div>
-                    </div>
-                    <div class="deliverable-item">
-                        <div class="deliverable-icon">✓</div>
-                        <div class="deliverable-text">PTO Documentation Support</div>
-                    </div>
-                </div>
-
-                <h3>Why Choose MapIT Design</h3>
-                
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <h4>Fast Turnaround</h4>
-                        <p>Typical delivery within 24–48 hours for standard residential projects.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h4>AHJ-Compliant Designs</h4>
-                        <p>Designed to meet local building department and utility requirements across the United States and Canada.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h4>Experienced Design Team</h4>
-                        <p>Specialized in residential and commercial Solar PV and Battery Energy Storage System (BESS) designs.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h4>Scalable Support</h4>
-                        <p>Whether you need five projects per week or hundreds per month, our workflow scales with your business.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h4>Quality Focus</h4>
-                        <p>Every project undergoes quality checks before delivery to minimize revisions and keep your installations on schedule.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h4>Dedicated Partnership</h4>
-                        <p>We work as an extension of your team—not just another outsourcing vendor.</p>
-                    </div>
-                </div>
-
-                <h3>Industries We Support</h3>
-                <p>We provide engineering support for:</p>
-                <div class="workflow-list">
-                    <ul style="margin-left: 20px; list-style-type: disc;">
-                        <li>Residential Solar PV</li>
-                        <li>Commercial Solar PV</li>
-                        <li>Battery Energy Storage Systems (BESS)</li>
-                        <li>EV Charger Integration</li>
-                        <li>Service Panel Upgrades</li>
-                        <li>Ground Mount Solar Systems</li>
-                    </ul>
-                </div>
-
-                <h3>Serving Installers Across the USA & Canada</h3>
-                <p>We support solar installers, EPC companies, and renewable energy contractors across the United States and Canada by delivering permit-ready documentation that complies with local AHJ requirements, utility standards, and NEC/CEC codes—helping reduce revisions, accelerate approvals, and keep projects on schedule.</p>
-
-                <h3>Our Commitment</h3>
-                <p>At MapIT Design, we understand that every delayed permit can impact installation schedules, revenue, and customer satisfaction. That's why we focus on delivering reliable, accurate, and code-compliant solar design solutions that help reduce revisions, minimize delays, and keep your projects moving forward.</p>
-
-<p>From the initial proposal to final PTO approval, we are committed to being a trusted solar design partner, providing the technical expertise and support your business needs to scale efficiently.</p>
-
-                <div class="cta-section">
-                    <h3>Ready to Scale Your Solar Projects?</h3>
-                    <p>Whether you need reliable overflow design support or a long-term solar engineering partner, MapIT Design is here to support your growth. Let us simplify your workflow, reduce turnaround times, minimize permit revisions, and provide accurate, AHJ-compliant design packages that keep your projects moving from proposal to PTO.</p>
-                    <div class="cta-buttons">
-                        <a href="#contact" class="btn-cta-primary">Request a Quote</a>
-                        <a href="mailto:info@mapitdesign.com" class="btn-cta-secondary">Email Us</a>
-                    </div>                   
-     
-    <!-- SERVICES SECTION -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-<p>Complete solar design, engineering, permitting, and technical support solutions from proposal to PTO.</p>
-</div>
-
-<h3 class="service-category-title">End-to-End Solar Project Support</h3>
-<div class="services-grid">
-
-    <div class="service-card">
-        <h4>1. Proposal Design</h4>
-        <p>Aurora Solar proposals, system layouts, production analysis, and customer-ready designs to support accurate project presentations and sales conversion.</p>
+        <div>
+          <img src="./assets/about-solar.jpg" alt="Solar permit plans and design overview">
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="service-card">
-        <h4>2. Solar Permit Design</h4>
-        <p>Complete AHJ-compliant permit packages including site plans, roof layouts, electrical diagrams, structural documentation, equipment details, and code compliance notes.</p>
-    </div>
-
-    <div class="service-card">
-        <h4>3. PE Stamping & Engineering Support</h4>
-        <p>Professional Engineer stamped drawings and engineering coordination to meet state, utility, and local jurisdiction requirements.</p>
-    </div>
-
-    <div class="service-card">
-        <h4>4. Permit Submission Support</h4>
-        <p>Permit-ready documentation support to help installers submit accurate packages and reduce AHJ comments, revisions, and approval delays.</p>
-    </div>
-
-    <div class="service-card">
-        <h4>5. Interconnection Approval Support</h4>
-        <p>Utility interconnection documentation, single-line diagrams, equipment information, and technical support to help achieve utility approval.</p>
-    </div>
-
-    <div class="service-card">
-        <h4>6. PTO Support</h4>
-        <p>Final documentation support for Permission to Operate (PTO), helping installers complete projects smoothly from installation to activation.</p>
-    </div>
-
-</div>
-
-
-<h3 class="service-category-title">CAD & Technical Design Services</h3>
-<div class="services-grid">
-
-    <div class="service-card">
-        <h4>AutoCAD Design & Drafting</h4>
-        <p>Professional CAD drafting services including solar layouts, electrical drawings, construction drawings, and custom technical documentation.</p>
-    </div>
-
-    <div class="service-card">
-        <h4>Residential & Commercial Solar Design</h4>
-        <p>Complete PV system design support for rooftop, ground mount, carport, and commercial solar projects.</p>
-    </div>
-
-    <div class="service-card">
-        <h4>Battery Energy Storage Design</h4>
-        <p>Battery storage system layouts, equipment integration, electrical documentation, and permit support for modern energy solutions.</p>
-    </div>
-
-</div>
-
-
-<h3 class="service-category-title">GIS & Mapping Solutions</h3>
-<div class="services-grid">
-
-    <div class="service-card">
-        <h4>GIS Projects & Mapping Services</h4>
-        <p>GIS mapping, spatial analysis, utility mapping, renewable energy site analysis, and customized geospatial solutions.</p>
-    </div>
-
-</div>
-<!-- CONTACT SECTION -->
-<section class="contact" id="contact">
+  <section id="services">
     <div class="container">
-        <div class="contact-header">
-            <h2>Contact MapIT Design (MID)</h2>
-            <p>
-                Ready to streamline your solar design workflow? Contact us for solar proposal design, permit packages, PE stamping, CAD drafting, GIS solutions, and engineering support.
-            </p>
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>End-to-end solar project support — clear deliverables that help you submit complete permit packages and achieve faster approvals.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service">
+          <h4>Aurora Proposal Design</h4>
+          <p>Optimized system layouts, production analysis, and customer-ready proposals to increase sales conversion.</p>
         </div>
-
-        <div class="contact-container">
-
-            <div class="contact-info">
-                <h3>Get In Touch</h3>
-
-                <p>
-                    MapIT Design (MID) provides reliable solar design and engineering support for installers, EPC companies, and renewable energy contractors across the United States and Canada.
-                </p>
-
-                <p>
-                    <strong>Email:</strong> info@mapitdesign.com
-                </p>
-
-                <p>
-                    <strong>Office Address:</strong><br>
-                    [Vijay Nagar, Delhi]<br>
-                    [India]
-                </p>
-
-                <p>
-                    <strong>Services:</strong><br>
-                    Solar Proposal Design, AHJ Permit Packages, PE Stamping Support, CAD Drafting, GIS Mapping, and PTO Support
-                </p>
-
-                <p>
-                    <strong>Service Area:</strong><br>
-                    United States & Canada
-                </p>
-            </div>
-
-            <div class="contact-form">
-                <form>
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="text" placeholder="Company Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="tel" placeholder="Phone Number">
-
-                    <select>
-                        <option>Select Service</option>
-                        <option>Solar Proposal Design</option>
-                        <option>Permit Design</option>
-                        <option>PE Stamping</option>
-                        <option>CAD Drafting</option>
-                        <option>GIS Services</option>
-                        <option>PTO Support</option>
-                    </select>
-
-                    <textarea placeholder="Tell us about your project"></textarea>
-
-                    <button type="submit">Send Inquiry</button>
-                </form>
-            </div>
-
+        <div class="service">
+          <h4>Solar Permit Plan Sets</h4>
+          <p>Complete AHJ-compliant permit packages: site plans, roof layouts, single-line diagrams, three-line diagrams, equipment specs, and code notes.</p>
         </div>
+        <div class="service">
+          <h4>Structural &amp; PE Stamping Support</h4>
+          <p>Coordinate professional engineer review and stamping where required by local jurisdictions.</p>
+        </div>
+        <div class="service">
+          <h4>Permit Submission &amp; Revision Support</h4>
+          <p>Assistance with permit comments, revisions, and AHJ interactions to reduce approval cycles.</p>
+        </div>
+        <div class="service">
+          <h4>Utility Interconnection</h4>
+          <p>Prepare interconnection applications, technical documentation, and single-line diagrams for utilities.</p>
+        </div>
+        <div class="service">
+          <h4>PTO &amp; Final Documentation</h4>
+          <p>Support through Permission to Operate (PTO) and final documentation handoff to the owner/operator.</p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-
-<!-- FOOTER -->
-<footer class="footer">
+  <section id="workflow">
     <div class="container">
-        <p>
-            © 2020 MapIT Design (MID). All Rights Reserved.
-        </p>
+      <div class="section-title">
+        <h2>Our Workflow</h2>
+        <p>A repeatable process that minimizes surprises and keeps projects moving from proposal to PTO.</p>
+      </div>
 
-        <p>
-            Solar Design | Permit Engineering Support | CAD Drafting | GIS Solutions
-        </p>
+      <div class="timeline">
+        <div class="step">
+          <div class="num">1</div>
+          <strong>Proposal</strong>
+          <p>Site review, Aurora layout, and commercial/residential proposals.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <strong>Design</strong>
+          <p>Electrical &amp; structural design, one-line and three-line diagrams.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <strong>Permit</strong>
+          <p>Prepare permit packages and submit to AHJ or support your submission.</p>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <strong>Interconnection</strong>
+          <p>Utility paperwork and interconnection support until approval.</p>
+        </div>
+        <div class="step">
+          <div class="num">5</div>
+          <strong>PTO</strong>
+          <p>Final documentation and Permission to Operate support.</p>
+        </div>
+      </div>
     </div>
-</footer>
+  </section>
+
+  <section id="why-us">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Choose MapIT Design</h2>
+        <p>Focused expertise, fast turnarounds, and AHJ-aware deliverables to reduce approval delays.</p>
+      </div>
+
+      <div class="about-grid">
+        <div>
+          <h3>Quality &amp; Compliance</h3>
+          <p>Designs are reviewed for NEC, CEC, and local AHJ requirements. We include clear notes and documentation your permitting authority expects.</p>
+          <h3 style="margin-top:18px">Scalable Support</h3>
+          <p>From a handful of projects to large portfolios, our workflows and QA scale with your business needs.</p>
+        </div>
+        <div>
+          <h3>Dedicated Partnership</h3>
+          <p>We work as an extension of your team — providing predictable timelines, consistent deliverables, and clear communication.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact &amp; Get a Quote</h2>
+        <p>Ready to scale your solar projects? Request a quote or contact our team for immediate design support.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card">
+          <h4><i class="fa-solid fa-envelope"></i> Email</h4>
+          <p><a href="mailto:info@mapitdesign.com">info@mapitdesign.com</a></p>
+        </div>
+        <div class="card">
+          <h4><i class="fa-solid fa-phone"></i> Phone</h4>
+          <p><a href="tel:+18005551234">+1 (800) 555-1234</a></p>
+        </div>
+        <div class="card">
+          <h4><i class="fa-solid fa-map-location-dot"></i> Location</h4>
+          <p>Serving the United States &amp; Canada</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:20px">
+        <a class="btn-primary" href="mailto:info@mapitdesign.com?subject=Request%20a%20Quote">Request a Quote</a>
+        <a class="btn-outline" href="#">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; MapIT Design (MID) — All rights reserved.</p>
+      <p class="footer-branding">Serving solar installers across the USA &amp; Canada</p>
+    </div>
+  </footer>
+
+</body>
+</html>
