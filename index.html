@@ -110,30 +110,9 @@
     .service{background:#fff;border:1px solid var(--border-subtle);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
     .service h4{color:var(--mid-dark-blue);margin-bottom:8px}
 
-    /* WORKFLOW DIAGRAM */
-    .workflow-diagram{background:#fff;border:1px solid var(--border-subtle);border-radius:12px;padding:24px;margin-bottom:28px;box-shadow:var(--shadow);overflow-x:auto}
-    .workflow-steps{display:flex;gap:10px;align-items:stretch;min-width:max-content;position:relative;justify-content:center;flex-wrap:wrap}
-    .workflow-step{display:flex;flex-direction:column;align-items:center;min-width:140px;position:relative}
-    .workflow-step-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;margin-bottom:10px;flex-shrink:0}
-    .workflow-step-title{font-weight:600;font-size:13px;text-align:center;color:var(--mid-dark-blue);margin-bottom:8px}
-    .workflow-step-desc{font-size:12px;color:var(--muted);text-align:center;line-height:1.4}
-    .workflow-arrow{display:flex;align-items:center;justify-content:center;color:var(--mid-green);font-size:20px;margin:0 -5px}
-
-    /* Color palette for workflow steps */
-    .step-1 .workflow-step-circle{background:linear-gradient(135deg,#0c4a9e,#1e5ba8)}
-    .step-2 .workflow-step-circle{background:linear-gradient(135deg,#0891b2,#06b6d4)}
-    .step-3 .workflow-step-circle{background:linear-gradient(135deg,#16a34a,#22c55e)}
-    .step-4 .workflow-step-circle{background:linear-gradient(135deg,#ea580c,#f97316)}
-    .step-5 .workflow-step-circle{background:linear-gradient(135deg,#d946ef,#f43f5e)}
-    .step-6 .workflow-step-circle{background:linear-gradient(135deg,#d946ef,#ec4899)}
-    .step-7 .workflow-step-circle{background:linear-gradient(135deg,#7c3aed,#8b5cf6)}
-    .step-8 .workflow-step-circle{background:linear-gradient(135deg,#1e40af,#2563eb)}
-
-    .workflow-benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-    .benefit-card{background:linear-gradient(135deg,rgba(16,185,129,.04),rgba(16,185,129,.02));border:1px solid rgba(22,163,74,.15);padding:18px;border-radius:12px;text-align:center}
-    .benefit-icon{font-size:28px;color:var(--mid-green);margin-bottom:10px}
-    .benefit-card h4{color:var(--mid-dark-blue);font-size:14px;font-weight:600;margin-bottom:6px}
-    .benefit-card p{color:var(--muted);font-size:13px;line-height:1.4}
+    /* WORKFLOW IMAGE */
+    .workflow-image{background:#fff;border:1px solid var(--border-subtle);border-radius:12px;padding:0;overflow:hidden;box-shadow:var(--shadow)}
+    .workflow-image img{width:100%;height:auto;display:block}
 
     /* PORTFOLIO */
     .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
@@ -156,8 +135,7 @@
     .footer{background:#020617;color:#fff;padding:32px;border-radius:12px;margin-top:34px;text-align:center}
 
     @media (max-width:1000px){.hero-inner{grid-template-columns:1fr;}.nav-menu{display:none}.mobile-toggle{display:block}.hero h1{font-size:30px}}
-    @media (max-width:900px){.workflow-steps{gap:8px}.workflow-step{min-width:120px}.workflow-step-circle{width:50px;height:50px;font-size:14px}.workflow-arrow{font-size:16px;margin:0 -8px}}
-    @media (max-width:700px){.testimonials{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.counters-grid{grid-template-columns:repeat(2,1fr)}.workflow-steps{gap:6px}.workflow-step{min-width:100px}.workflow-step-circle{width:44px;height:44px;font-size:12px;margin-bottom:6px}.workflow-step-title{font-size:11px}.workflow-step-desc{font-size:11px}.workflow-arrow{margin:0 -6px;font-size:14px}}
+    @media (max-width:700px){.testimonials{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.counters-grid{grid-template-columns:repeat(2,1fr)}}
   </style>
 </head>
 <body>
@@ -166,7 +144,6 @@
     <nav class="navbar" aria-label="Main navigation">
       <div class="nav-inner">
         <a href="/" class="logo" aria-label="MapIT Design home">
-          <!-- If you have a local asset keep ./assets/MID-LOGO.png, otherwise fallback to this text -->
           <img src="./MID-LOGO.png" alt="MapIT Design logo" onerror="this.style.display='none'">
           <div>
             <div class="brand-title">MapIT Design</div>
@@ -207,7 +184,6 @@
             <div>
               <div style="font-size:12px;color:rgba(255,255,255,.85)">Trusted by</div>
               <div class="trust" style="justify-content:flex-start;margin-top:6px">
-                <!-- Replace with real partner logos if available -->
                 <img src="https://dummyimage.com/120x36/ffffff/0f172a&text=Installer" alt="partner" />
                 <img src="https://dummyimage.com/120x36/ffffff/0f172a&text=EPC" alt="partner" />
                 <img src="https://dummyimage.com/120x36/ffffff/0f172a&text=Utility" alt="partner" />
@@ -225,7 +201,6 @@
       </div>
 
       <div>
-        <!-- hero image or mockup -->
         <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=7a8f9f7d93f1b6c5432a7b4c2530a8ea" alt="solar panels installation" style="width:100%;border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,.06)">
       </div>
     </div>
@@ -272,7 +247,6 @@
           </div>
         </div>
         <div>
-          <!-- About image -->
           <img src="https://images.unsplash.com/photo-1582719478250-17b5c5c1e8e7?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1f4fe0c4f4b6b23b4a1b1a5a5e5b6c3d" alt="Solar permit plans and design" style="height:320px">
         </div>
       </div>
@@ -322,79 +296,8 @@
         <p>From project intake to permit approval — we handle every step so you can focus on installation.</p>
       </div>
 
-      <div class="workflow-diagram">
-        <div class="workflow-steps">
-          <div class="workflow-step step-1">
-            <div class="workflow-step-circle"><i class="fa-solid fa-clipboard-user"></i></div>
-            <div class="workflow-step-title">Project Intake</div>
-            <div class="workflow-step-desc">Collect project details, utility info, and documents. Confirm scope, AHJ, and timeline.</div>
-          </div>
-          <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-          <div class="workflow-step step-2">
-            <div class="workflow-step-circle"><i class="fa-solid fa-map"></i></div>
-            <div class="workflow-step-title">Site Review</div>
-            <div class="workflow-step-desc">Analyze site conditions, zoning, setbacks. Verify utility access and interconnection requirements.</div>
-          </div>
-          <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-          <div class="workflow-step step-3">
-            <div class="workflow-step-circle"><i class="fa-solid fa-pen-ruler"></i></div>
-            <div class="workflow-step-title">System Design</div>
-            <div class="workflow-step-desc">Create optimized PV layout and stringing. Electrical & structural preliminary design.</div>
-          </div>
-          <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-          <div class="workflow-step step-4">
-            <div class="workflow-step-circle"><i class="fa-solid fa-file-contract"></i></div>
-            <div class="workflow-step-title">Permit Package</div>
-            <div class="workflow-step-desc">Prepare code-compliant drawings, calculations. Include labels, notes, and specifications.</div>
-          </div>
-          <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-          <div class="workflow-step step-5">
-            <div class="workflow-step-circle"><i class="fa-solid fa-check-circle"></i></div>
-            <div class="workflow-step-title">QC & QA Check</div>
-            <div class="workflow-step-desc">Internal QC & QA for accuracy, codes, and NEC requirements. Ensure complete submittal.</div>
-          </div>
-          <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-          <div class="workflow-step step-6">
-            <div class="workflow-step-circle"><i class="fa-solid fa-paper-plane"></i></div>
-            <div class="workflow-step-title">Permit Submission</div>
-            <div class="workflow-step-desc">Submit to AHJ or utility portal (SolarAPP+). Track application and respond to queries.</div>
-          </div>
-          <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-          <div class="workflow-step step-7">
-            <div class="workflow-step-circle"><i class="fa-solid fa-comments"></i></div>
-            <div class="workflow-step-title">Plan Review</div>
-            <div class="workflow-step-desc">Address AHJ comments and make revisions. Resubmit until approval.</div>
-          </div>
-          <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-          <div class="workflow-step step-8">
-            <div class="workflow-step-circle"><i class="fa-solid fa-badge-check"></i></div>
-            <div class="workflow-step-title">Approval & Delivery</div>
-            <div class="workflow-step-desc">Receive final approved permit. Deliver stamped plans and approval documents.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="workflow-benefits">
-        <div class="benefit-card">
-          <div class="benefit-icon"><i class="fa-solid fa-bullseye"></i></div>
-          <h4>Accurate & Compliant</h4>
-          <p>All designs follow NEC, IBC and local AHJ standards.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon"><i class="fa-solid fa-clock"></i></div>
-          <h4>Fast Turnaround</h4>
-          <p>Quick delivery without compromising quality.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon"><i class="fa-solid fa-users"></i></div>
-          <h4>Experienced Team</h4>
-          <p>Solar permit experts with years of industry experience.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon"><i class="fa-solid fa-shield"></i></div>
-          <h4>End-to-End Support</h4>
-          <p>From design to approval — we've got you covered.</p>
-        </div>
+      <div class="workflow-image">
+        <img src="https://github.com/MapITD/MapITD.github.io/assets/workflows/solar-permit-workflow.png" alt="Solar Permit Workflow Diagram" onerror="this.parentElement.innerHTML='<img src=&quot;https://via.placeholder.com/1200x600?text=Solar+Permit+Workflow&quot; alt=&quot;Solar Permit Workflow&quot; style=&quot;width:100%;display:block&quot;>'">
       </div>
     </div>
   </section>
@@ -493,7 +396,6 @@
 
         <div style="background:#fff;padding:18px;border-radius:12px;border:1px solid var(--border-subtle)">
           <h4 style="margin-bottom:10px">Quick Request</h4>
-          <!-- simple form (will open mail client) -->
           <form action="mailto:info@mapitdesign.com" method="post" enctype="text/plain">
             <div style="display:flex;gap:8px;flex-wrap:wrap">
               <input type="text" name="name" placeholder="Your name" style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border-subtle)" required>
@@ -524,7 +426,6 @@
   </footer>
 
   <script>
-    // Mobile nav toggle
     const toggle = document.getElementById('mobileToggle');
     const mainNav = document.getElementById('main-nav');
     toggle?.addEventListener('click', () => {
@@ -539,7 +440,6 @@
       }
     });
 
-    // Simple fade-in on scroll
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -550,7 +450,7 @@
       });
     }, {threshold:0.12});
 
-    document.querySelectorAll('section, .feature, .workflow-step, .benefit-card, .portfolio-card, .testimonial').forEach(el=>{
+    document.querySelectorAll('section, .feature, .portfolio-card, .testimonial').forEach(el=>{
       el.style.opacity = 0;
       el.style.transform = 'translateY(10px)';
       el.style.transition = 'opacity .6s ease,transform .6s ease';
