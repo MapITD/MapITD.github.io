@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pb8H6kQmY3u6Yv+ZQkFq3k1d4X9j1wO9i2VJ7p3G2Q1o5g6h2k9z1Vw5YbR0Qm2vZP1l6T2X2Qv3b4c5d6e7f" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pb8H6kQmY3u6Yv+ZQkFq3k1d4X9j1wO9i2VJ7p3G2Q1o5g6h2k9z1Vw5YbR0Qm2vZP1l6T2X" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     :root{
@@ -40,7 +40,7 @@
 
     /* NAV */
     .navbar{position:sticky;top:12px;z-index:1200;padding:10px 0}
-    .nav-inner{display:flex;align-items:center;gap:20px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));backdrop-filter:blur(6px);border-radius:16px;padding:10px;border:1px solid rgba(255,255,255,.15)}
+    .nav-inner{display:flex;align-items:center;gap:20px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));backdrop-filter:blur(6px);border-radius:16px;padding:10px;border:1px solid rgba(255,255,255,.12)}
     .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
     .logo img{height:46px;width:auto;display:block}
     .brand-title{font-weight:700;color:var(--mid-dark-blue);font-size:18px}
@@ -116,7 +116,7 @@
 
     /* PORTFOLIO */
     .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-    .portfolio-card{border-radius:12px;overflow:hidden;position:relative}
+    .portfolio-card{border-radius:12px;overflow:hidden;position:relative;cursor:pointer}
     .portfolio-card img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .45s}
     .portfolio-card:hover img{transform:scale(1.06)}
     .portfolio-card .meta{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.5);color:#fff;padding:8px 10px;border-radius:8px;font-size:13px}
@@ -134,8 +134,169 @@
     /* FOOTER */
     .footer{background:#020617;color:#fff;padding:32px;border-radius:12px;margin-top:34px;text-align:center}
 
-    @media (max-width:1000px){.hero-inner{grid-template-columns:1fr;}.nav-menu{display:none}.mobile-toggle{display:block}.hero h1{font-size:30px}}
-    @media (max-width:700px){.testimonials{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.counters-grid{grid-template-columns:repeat(2,1fr)}}
+    /* MODAL STYLES */
+    .modal-overlay{
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background:rgba(15,23,42,0.5);
+      backdrop-filter:blur(2px);
+      z-index:1300;
+      animation:fadeIn .3s ease;
+    }
+    .modal-overlay.active{display:flex;align-items:center;justify-content:center}
+    @keyframes fadeIn{
+      from{opacity:0;}
+      to{opacity:1;}
+    }
+    .modal{
+      background:#fff;
+      border-radius:16px;
+      box-shadow:0 20px 60px rgba(15,23,42,.2);
+      max-width:600px;
+      width:90%;
+      max-height:85vh;
+      overflow-y:auto;
+      position:relative;
+      animation:slideUp .4s cubic-bezier(.16,1,.3,1);
+    }
+    @keyframes slideUp{
+      from{
+        opacity:0;
+        transform:translateY(20px) scale(0.95);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+      }
+    }
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      padding:28px;
+      border-bottom:1px solid var(--border-subtle);
+      position:sticky;
+      top:0;
+      background:#fff;
+    }
+    .modal-close{
+      background:transparent;
+      border:none;
+      font-size:24px;
+      color:var(--muted);
+      cursor:pointer;
+      padding:0;
+      width:32px;
+      height:32px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:color .2s;
+      flex-shrink:0;
+    }
+    .modal-close:hover{color:var(--text-dark)}
+    .modal-body{
+      padding:28px;
+    }
+    .modal-category{
+      color:var(--mid-green);
+      font-weight:700;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+      margin-bottom:12px;
+    }
+    .modal h2{
+      font-size:28px;
+      color:var(--mid-dark-blue);
+      font-weight:800;
+      margin-bottom:16px;
+      line-height:1.2;
+    }
+    .modal-description{
+      color:var(--text-dark);
+      font-size:15px;
+      line-height:1.7;
+      margin-bottom:28px;
+    }
+    .modal-section{
+      margin-bottom:28px;
+    }
+    .modal-section h3{
+      font-size:16px;
+      font-weight:700;
+      color:var(--mid-dark-blue);
+      margin-bottom:14px;
+    }
+    .modal-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .modal-list li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin-bottom:10px;
+      color:var(--text-dark);
+      font-size:14px;
+      line-height:1.5;
+    }
+    .modal-list li::before{
+      content:"✓";
+      color:var(--mid-green);
+      font-weight:700;
+      flex-shrink:0;
+      margin-top:2px;
+    }
+    .modal-note{
+      background:rgba(22,163,74,0.05);
+      border-left:3px solid var(--mid-green);
+      padding:12px 16px;
+      border-radius:6px;
+      font-size:13px;
+      color:var(--text-dark);
+      margin-bottom:28px;
+    }
+    .modal-cta{
+      margin-top:28px;
+      padding-top:28px;
+      border-top:1px solid var(--border-subtle);
+      text-align:center;
+    }
+    .modal-cta .btn-primary{
+      display:inline-block;
+    }
+
+    @media (max-width:1000px){
+      .hero-inner{grid-template-columns:1fr;}
+      .nav-menu{display:none}
+      .mobile-toggle{display:block}
+      .hero h1{font-size:30px}
+    }
+    @media (max-width:700px){
+      .testimonials{grid-template-columns:1fr}
+      .about-grid{grid-template-columns:1fr}
+      .counters-grid{grid-template-columns:repeat(2,1fr)}
+      .modal{
+        width:95%;
+        max-height:90vh;
+        border-radius:12px;
+      }
+      .modal-header{
+        padding:20px;
+      }
+      .modal-body{
+        padding:20px;
+      }
+      .modal h2{
+        font-size:22px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -171,7 +332,7 @@
       <div>
         <span class="badge">Solar Permit Design Excellence</span>
         <h1>Professional Solar Permit Design &amp; Engineering — fast, compliant, scalable</h1>
-        <p>AHJ-compliant permit plan sets, Aurora proposals, PE stamping support, and utility interconnection documentation for solar installers and EPCs. Typical residential turnaround: 24 hours.</p>
+        <p>AHJ-compliant permit plan sets, Aurora proposals, PE stamping support, and utility interconnection documentation for solar installers and EPCs. Typical residential turnaround: 24 hours or less.</p>
 
         <div class="hero-actions">
           <a class="btn-primary" href="#contact">Get Started</a>
@@ -201,7 +362,7 @@
       </div>
 
       <div>
-        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=7a8f9f7d93f1b6c5432a7b4c2530a8ea" alt="solar panels installation" style="width:100%;height:auto;border-radius:12px;box-shadow:var(--shadow)">
+        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=7a8f9f7d93f1b6c5432a7b4c2530a8ea" alt="solar panels installation" style="width:100%;border-radius:12px;box-shadow:var(--shadow)">
       </div>
     </div>
   </header>
@@ -239,7 +400,7 @@
       <div class="about-grid">
         <div>
           <h3>Reliable. Compliant. Fast.</h3>
-          <p>MapIT Design (MID) partners with solar installers, EPCs, and renewable contractors across the United States and Canada. Our services include Aurora Solar proposals, AHJ-compliant permit packages, PE stamping coordination, and utility interconnection documentation.</p>
+          <p>MapIT Design (MID) partners with solar installers, EPCs, and renewable contractors across the United States and Canada. Our services include Aurora Solar proposals, AHJ-compliant permit plan sets, structural engineering coordination, and utility interconnection documentation.</p>
           <p><strong>Typical turnaround:</strong> 24–72 hours for standard residential projects. Scalable support available for larger portfolios and commercial projects.</p>
           <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn-primary" href="#contact" style="font-size:14px">Request a Quote</a>
@@ -247,7 +408,7 @@
           </div>
         </div>
         <div>
-          <img src="https://images.unsplash.com/photo-1582719478250-17b5c5c1e8e7?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1f4fe0c4f4b6b23b4a1b1a5a5e5b6c3d" alt="Solar permit plans and design work">
+          <img src="https://images.unsplash.com/photo-1582719478250-17b5c5c1e8e7?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1f4fe0c4f4b6b23b4a1b1a5a5e5b6c3d" alt="Solar permit plans and design documentation" style="width:100%">
         </div>
       </div>
     </div>
@@ -310,25 +471,194 @@
       </div>
 
       <div class="portfolio-grid">
-        <div class="portfolio-card">
-          <img src="https://raw.githubusercontent.com/MapITD/MapITD.github.io/main/.github/Residential%20Solar%20Layout.JPG" alt="Residential solar layout">
+        <div class="portfolio-card" data-modal="modal-residential" role="button" tabindex="0" aria-label="Click to view Residential Permit Set details">
+          <img src="https://raw.githubusercontent.com/MapITD/MapITD.github.io/main/.github/Residential%20Solar%20Layout.JPG" alt="Residential solar permit layout">
           <div class="meta">Residential — Permit Set</div>
         </div>
-        <div class="portfolio-card">
-          <img src="https://raw.githubusercontent.com/MapITD/MapITD.github.io/main/.github/Commercial%20Layout.JPG" alt="Commercial rooftop solar">
+        <div class="portfolio-card" data-modal="modal-commercial" role="button" tabindex="0" aria-label="Click to view Commercial Structural Review details">
+          <img src="https://raw.githubusercontent.com/MapITD/MapITD.github.io/main/.github/Commercial%20Layout.JPG" alt="Commercial rooftop solar design">
           <div class="meta">Commercial — Structural Review</div>
         </div>
-        <div class="portfolio-card">
-          <img src="https://raw.githubusercontent.com/MapITD/MapITD.github.io/main/.github/Site%20Plan.JPG" alt="Site plan">
+        <div class="portfolio-card" data-modal="modal-utility" role="button" tabindex="0" aria-label="Click to view Utility Interconnection Docs details">
+          <img src="https://raw.githubusercontent.com/MapITD/MapITD.github.io/main/.github/Site%20Plan.JPG" alt="Solar utility interconnection site plan">
           <div class="meta">Utility Interconnection Docs</div>
         </div>
-        <div class="portfolio-card">
-          <img src="https://raw.githubusercontent.com/MapITD/MapITD.github.io/main/.github/PE%20stamps.JPG" alt="PE stamps">
+        <div class="portfolio-card" data-modal="modal-pe" role="button" tabindex="0" aria-label="Click to view PE Stamping Coordination details">
+          <img src="https://raw.githubusercontent.com/MapITD/MapITD.github.io/main/.github/PE%20stamps.JPG" alt="Professional engineering PE stamping">
           <div class="meta">PE Stamping Coordination</div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- MODALS -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-hidden="true" aria-modal="true">
+    <!-- RESIDENTIAL MODAL -->
+    <div class="modal" id="modal-residential">
+      <div class="modal-header">
+        <div>
+          <div class="modal-category">Service</div>
+          <h2>Residential Solar Permit Design</h2>
+        </div>
+        <button class="modal-close" aria-label="Close modal" data-close>×</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-description">We prepare complete, permit-ready residential PV plan sets tailored to the project location, utility requirements, and local AHJ standards.</p>
+        
+        <div class="modal-section">
+          <h3>Scope Includes</h3>
+          <ul class="modal-list">
+            <li>Roof and site layout with accurate module placement</li>
+            <li>PV array configuration, setbacks, and roof zones</li>
+            <li>Module, inverter, optimizer and racking information</li>
+            <li>Electrical single-line diagram (SLD)</li>
+            <li>Conductor, OCPD and equipment calculations</li>
+            <li>Equipment grounding and disconnect details</li>
+            <li>Rapid shutdown and labeling requirements</li>
+            <li>Structural attachment details and roof information</li>
+            <li>NEC and applicable local code notes</li>
+            <li>AHJ-specific plan requirements</li>
+            <li>Permit-ready PDF drawing package</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Typical Projects</h3>
+          <p style="color:var(--text-dark);font-size:14px;line-height:1.6">Residential PV • PV + Battery • Service Upgrades • Retrofit Projects</p>
+        </div>
+
+        <div class="modal-cta">
+          <a class="btn-primary" href="#contact">Request a Residential Design</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMMERCIAL MODAL -->
+    <div class="modal" id="modal-commercial">
+      <div class="modal-header">
+        <div>
+          <div class="modal-category">Service</div>
+          <h2>Commercial Rooftop &amp; Structural Design Support</h2>
+        </div>
+        <button class="modal-close" aria-label="Close modal" data-close>×</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-description">We support commercial solar projects with detailed rooftop layouts, equipment placement, structural considerations, and permit documentation for larger PV systems.</p>
+        
+        <div class="modal-section">
+          <h3>Scope Includes</h3>
+          <ul class="modal-list">
+            <li>Commercial rooftop PV layout</li>
+            <li>Module and equipment placement</li>
+            <li>Roof zones, access pathways and setbacks</li>
+            <li>Racking and attachment information</li>
+            <li>Structural load considerations</li>
+            <li>Existing roof condition/design information</li>
+            <li>Equipment and inverter locations</li>
+            <li>Electrical design coordination</li>
+            <li>SLD and electrical documentation</li>
+            <li>NEC / IBC and local AHJ requirements</li>
+            <li>Permit-ready construction drawings</li>
+            <li>Coordination with structural engineering/PE review when required</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Typical Projects</h3>
+          <p style="color:var(--text-dark);font-size:14px;line-height:1.6">Commercial Rooftops • Warehouses • Offices • Retail Buildings • Larger PV Systems</p>
+        </div>
+
+        <div class="modal-cta">
+          <a class="btn-primary" href="#contact">Request a Commercial Design</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- UTILITY MODAL -->
+    <div class="modal" id="modal-utility">
+      <div class="modal-header">
+        <div>
+          <div class="modal-category">Service</div>
+          <h2>Utility Interconnection Documentation</h2>
+        </div>
+        <button class="modal-close" aria-label="Close modal" data-close>×</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-description">We prepare the technical drawings and documentation required to support solar and battery interconnection applications with utilities and AHJs.</p>
+        
+        <div class="modal-section">
+          <h3>Scope Includes</h3>
+          <ul class="modal-list">
+            <li>Utility-specific interconnection requirements review</li>
+            <li>Electrical site plan and equipment layout</li>
+            <li>Single-line diagram</li>
+            <li>Existing and proposed electrical configuration</li>
+            <li>Main service and meter information</li>
+            <li>PV system and battery specifications</li>
+            <li>AC/DC system ratings</li>
+            <li>Point of common coupling (PCC) information</li>
+            <li>Disconnect and protection details</li>
+            <li>Service/load calculations where applicable</li>
+            <li>Utility-required notes and documentation</li>
+            <li>Coordination with permit plan sets</li>
+            <li>Support for SolarAPP+ and utility/AHJ submission requirements</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Typical Projects</h3>
+          <p style="color:var(--text-dark);font-size:14px;line-height:1.6">New PV Interconnections • PV + ESS • Service Upgrades • Battery Additions • System Modifications</p>
+        </div>
+
+        <div class="modal-cta">
+          <a class="btn-primary" href="#contact">Request Interconnection Support</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PE STAMPING MODAL -->
+    <div class="modal" id="modal-pe">
+      <div class="modal-header">
+        <div>
+          <div class="modal-category">Service</div>
+          <h2>Professional Engineering &amp; PE Stamping Coordination</h2>
+        </div>
+        <button class="modal-close" aria-label="Close modal" data-close>×</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-description">We coordinate structural and electrical engineering review and PE stamping for solar projects requiring professional engineering approval.</p>
+        
+        <div class="modal-section">
+          <h3>Scope Includes</h3>
+          <ul class="modal-list">
+            <li>Structural drawing review and coordination</li>
+            <li>Electrical drawing review and coordination</li>
+            <li>PE-stamped structural calculations where required</li>
+            <li>PE-stamped electrical documentation where applicable</li>
+            <li>Roof attachment and structural evaluation coordination</li>
+            <li>Load calculations and engineering documentation</li>
+            <li>Review against applicable codes and AHJ requirements</li>
+            <li>Coordination with licensed Professional Engineers</li>
+            <li>Multi-state engineering coordination based on project requirements</li>
+            <li>Stamped plan package preparation for permitting</li>
+          </ul>
+        </div>
+
+        <div class="modal-note">
+          <strong>Important:</strong> Engineering stamps are provided through appropriately licensed Professional Engineers based on project requirements and jurisdiction.
+        </div>
+
+        <div class="modal-section">
+          <h3>Typical Projects</h3>
+          <p style="color:var(--text-dark);font-size:14px;line-height:1.6">Structural Review • Electrical Review • Roof Attachments • PE-Stamped Calculations • Permit Engineering</p>
+        </div>
+
+        <div class="modal-cta">
+          <a class="btn-primary" href="#contact">Request PE Coordination</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section id="why-us">
     <div class="container">
@@ -426,6 +756,7 @@
   </footer>
 
   <script>
+    // Mobile menu toggle
     const toggle = document.getElementById('mobileToggle');
     const mainNav = document.getElementById('main-nav');
     toggle?.addEventListener('click', () => {
@@ -440,6 +771,7 @@
       }
     });
 
+    // Intersection observer for fade-in animations
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -455,6 +787,73 @@
       el.style.transform = 'translateY(10px)';
       el.style.transition = 'opacity .6s ease,transform .6s ease';
       io.observe(el);
+    });
+
+    // Modal functionality
+    const modalOverlay = document.getElementById('modal-overlay');
+    const portfolioCards = document.querySelectorAll('.portfolio-card[data-modal]');
+    const closeButtons = document.querySelectorAll('.modal-close[data-close]');
+
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modalOverlay.classList.add('active');
+        modalOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        modal.scrollTop = 0;
+      }
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      modalOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    // Open modal on card click
+    portfolioCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const modalId = card.getAttribute('data-modal');
+        openModal(modalId);
+      });
+
+      // Keyboard accessibility
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const modalId = card.getAttribute('data-modal');
+          openModal(modalId);
+        }
+      });
+    });
+
+    // Close modal on close button click
+    closeButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeModal();
+      });
+    });
+
+    // Close modal on overlay click (outside modal)
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // Close modal when clicking CTA buttons (let them scroll to contact)
+    document.querySelectorAll('.modal-cta .btn-primary').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeModal();
+      });
     });
   </script>
 </body>
